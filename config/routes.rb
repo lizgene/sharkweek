@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # The second line there allows you to refresh the page on routes and not 
   # have Rails confuse a client side refresh with a request to a resource.
   root 'application#index'
-  get '*path' => 'application#index'
+  # get '*path' => 'application#index'
 
   resources :products, only: [:index]
 
@@ -51,9 +51,9 @@ Rails.application.routes.draw do
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
-  namespace :api, defaults: {format: :json} do
-    resources :task_lists, only: [:index] do
-      resources :tasks, only: [:index, :create, :update, :destroy]
-    end
-  end
+  # namespace :api, defaults: {format: :json} do
+  #   resources :task_lists, only: [:index] do
+  #     resources :tasks, only: [:index, :create, :update, :destroy]
+  #   end
+  # end
 end

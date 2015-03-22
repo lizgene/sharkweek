@@ -31,6 +31,8 @@ group :test, :development do
   gem 'pry-remote'
   gem 'spring-commands-rspec'
   gem 'faker'
+  gem 'teaspoon'
+  gem 'phantomjs'
 end
 
 

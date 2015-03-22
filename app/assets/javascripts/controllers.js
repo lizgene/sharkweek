@@ -2,43 +2,42 @@
 
 var sharkweekControllers = angular.module('sharkweekControllers', [])
 
-sharkweekControllers.controller('HomeCtrl', ['$scope', '$routeParams', '$location', '$resource',
-  function($scope, $routeParams, $location, $resource) {
+sharkweekControllers.controller('ProductsController', ['$scope', '$routeParams', '$location', 'Product',
+	function($scope, $routeParams, $location, Product) {
 
-  	var products = [
-		  {
-		    "id": "1",
-		    "name": 'Baked Potato w/ Cheese'
-		  },
-		  {
-		    "id": "2",
-		    "name": 'Garlic Mashed Potatoes',
-		  },
-		  {
-		    "id": "3",
-		    "name": 'Potatoes Au Gratin',
-		  },
-		  {
-		    "id": "4",
-		    "name": 'Baked Brussel Sprouts',
-		  },
-		]
-
-
-  	var keywords;
+		var keywords;
   	$scope.search = function(keywords){
-  		return $location.path('/').search('keywords', keywords)
+  		return $location.path('/products').search('keywords', keywords)
   	}
-	  
+
   	if($routeParams.keywords){
-  		keywords = $routeParams.keywords.toLowerCase();
-  		$scope.products = products.filter(function(product) {
-        return product.name.toLowerCase().indexOf(keywords) !== -1;
-      });
+  		Product.query({ keywords: $routeParams.keywords }, function(results) {
+			  return $scope.products = results;
+			});
     } else {
       return $scope.products = [];
     }
-  }]);
+
+	}])
+
+	sharkweekControllers.controller('HomeCtrl', ['$scope', '$routeParams', '$location', 'Product', 
+		function($scope, $routeParams, $location, Product) {
+ 
+
+		var keywords;
+		$scope.search = function(keywords){
+			return $location.path('/products').search('keywords', keywords)
+		}
+
+		if($routeParams.keywords){
+			Product.query({ keywords: $routeParams.keywords }, function(results) {
+			  return $scope.products = results;
+			});
+	  } else {
+	    return $scope.products = Product.query();
+	  }
+
+	}]);
 
 sharkweekControllers.controller('AboutCtrl', ['$scope',
   function($scope) {
