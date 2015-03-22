@@ -2,8 +2,8 @@
 
 var sharkweekControllers = angular.module('sharkweekControllers', [])
 
-sharkweekControllers.controller('HomeCtrl', ['$scope', '$routeParams', '$location',
-  function($scope, $routeParams, $location) {
+sharkweekControllers.controller('HomeCtrl', ['$scope', '$routeParams', '$location', '$resource',
+  function($scope, $routeParams, $location, $resource) {
 
   	var products = [
 		  {

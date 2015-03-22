@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root 'application#index'
   get '*path' => 'application#index'
 
+  resources :products, only: [:index]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -50,7 +52,7 @@ Rails.application.routes.draw do
 
   # Example resource route within a namespace:
   namespace :api, defaults: {format: :json} do
-    resources :products, only: [:index] do
+    resources :task_lists, only: [:index] do
       resources :tasks, only: [:index, :create, :update, :destroy]
     end
   end

@@ -4,7 +4,8 @@
 var sharkWeek = angular.module('sharkWeek', [
   'ngRoute',
   'sharkweekControllers',
-  'templates'
+  'templates',
+  'ngResource'
 ]);
 
 

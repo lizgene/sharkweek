@@ -12,6 +12,7 @@ gem 'bower-rails'
 gem 'foreman'
 gem 'angular-rails-templates'
 
+
 #these + foreman are all required just for heroku
 group :production, :staging do
   gem "rails_12factor"
@@ -28,6 +29,8 @@ group :test, :development do
   gem 'selenium-webdriver'
   gem 'pry'
   gem 'pry-remote'
+  gem 'spring-commands-rspec'
+  gem 'faker'
 end
 
 
