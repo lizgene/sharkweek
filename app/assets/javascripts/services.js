@@ -1,7 +1,7 @@
 var sharkweekServices = angular.module('sharkweekServices', ['ngResource']);
 
-sharkweekServices.factory("Product", function($resource) {
-  return $resource("/api/products/:id", { id: "@id" },
+sharkweekServices.factory("Product", ["$resource", function($resource) {
+	return $resource("/api/products/:id", { id: "@id" },
     {
       'create':  { method: 'POST' },
       'index':   { method: 'GET', isArray: true },
@@ -10,4 +10,6 @@ sharkweekServices.factory("Product", function($resource) {
       'destroy': { method: 'DELETE' }
     }
   );
-});
+}])
+
+
