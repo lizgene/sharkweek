@@ -2,11 +2,11 @@
 
 
 var sharkWeek = angular.module('sharkWeek', [
+  'sharkweekServices',
   'ngRoute',
   'sharkweekControllers',
   'templates',
-  'ngResource',
-  'sharkweekServices'
+  'ngResource'
   ]);
 
 
@@ -17,9 +17,9 @@ sharkWeek.config(['$routeProvider', '$locationProvider',
         templateUrl: 'home.html',
         controller: 'HomeCtrl'
       }).
-      when('/products', {
-        templateUrl: 'home.html',
-        controller: 'ProductsController'
+      when('/products/:productId', {
+        templateUrl: 'product_detail.html',
+        controller: 'ProductDetailCtrl'
       }).
       when('/about', {
         templateUrl: 'about.html',

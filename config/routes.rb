@@ -3,10 +3,20 @@ Rails.application.routes.draw do
   # This is going to send all incoming requests to our index file and let angular handle them. 
   # The second line there allows you to refresh the page on routes and not 
   # have Rails confuse a client side refresh with a request to a resource.
-  root 'application#index'
+  # root 'application#index'
   # get '*path' => 'application#index'
 
-  resources :products, only: [:index]
+  # resources :products
+
+
+
+  root 'application#index'
+
+  namespace :api, defaults: { format: :json } do
+    resources :products 
+  end
+
+  get "*path" => "application#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
