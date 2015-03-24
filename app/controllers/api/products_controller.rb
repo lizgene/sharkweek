@@ -2,7 +2,7 @@ class Api::ProductsController < ApplicationController
   respond_to :json
 
   def index
-    @products = params[:keywords].blank? ? Product.all : Product.where('name like ?',"%#{params[:keywords]}%")
+    @products = params[:keywords].blank? ? Product.all : Product.where('name ILIKE ?',"%#{params[:keywords]}%")
 
     respond_with @products
   end
